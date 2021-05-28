@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import Board from "./board/board";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Board />
   </React.StrictMode>,
   document.getElementById("root")
 );

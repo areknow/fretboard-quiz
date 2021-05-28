@@ -1,34 +1,11 @@
 import cx from "classnames";
 import { useCallback, useEffect, useState } from "react";
-import "./App.scss";
-import { resetBoard } from "./board";
+import "./board.scss";
+import { resetBoard } from "./constants";
+import { Note } from "./types";
+import { generateBoardWithActiveNote } from "./utils";
 
-interface Note {
-  string: string;
-  note: string | null;
-}
-
-const getRandomInt = (max: number) => {
-  return Math.floor(Math.random() * max);
-};
-
-const generateBoardWithActiveNote = () => {
-  const board = resetBoard();
-  const string = board[getRandomInt(6)];
-  const notes = string.notes.filter((note) => note.value);
-  const note = notes[getRandomInt(notes.length)];
-  note.active = true;
-
-  return {
-    board,
-    activeNote: {
-      string: string.label,
-      note: note.value,
-    },
-  };
-};
-
-const App = () => {
+const Board = () => {
   const [board, setBoard] = useState(resetBoard());
   const [activeNote, setActiveNote] = useState<Note>({ string: "", note: "" });
 
@@ -71,6 +48,7 @@ const App = () => {
       </div>
       <br />
       <br />
+
       <pre style={{ whiteSpace: "pre-wrap", textAlign: "center" }}>
         {JSON.stringify(activeNote)}
       </pre>
@@ -90,4 +68,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Board;

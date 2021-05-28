@@ -1,0 +1,69 @@
+.board {
+  text-align: center;
+  display: flex;
+  padding: 10px 10px 8px 20px;
+  background: black;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    tr.invisible {
+      td {
+        padding: 0;
+      }
+    }
+    th,
+    td {
+      border: 1px solid black;
+    }
+    td {
+      padding: 20px;
+      position: relative;
+      background: white;
+      &:after {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background: red;
+        border-radius: 20px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.fret-label {
+  position: absolute;
+  top: -12px;
+  left: -21px;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note {
+  position: absolute;
+  top: -11px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: red;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+@media (orientation: portrait) {
+  body {
+    transform: rotate(90deg) translateX(50px);
+  }
+}

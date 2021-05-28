@@ -6,7 +6,7 @@ export const getRandomInt = (max: number) => {
 
 export const generateBoardWithActiveNote = () => {
   const board = resetBoard();
-  const string = board[getRandomInt(6)];
+  const string = board[getRandomInt(board.length)];
   const notes = string.notes.filter((note) => note.value);
   const note = notes[getRandomInt(notes.length)];
   note.active = true;

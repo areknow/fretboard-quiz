@@ -7,7 +7,7 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    tr.invisible {
+    tr.hidden {
       td {
         padding: 0;
       }
@@ -27,10 +27,12 @@
         left: 0;
         right: 0;
         margin: auto;
-        background: red;
         border-radius: 20px;
         width: 20px;
         height: 20px;
+      }
+      &.active:after {
+        background: red;
       }
     }
   }
@@ -60,6 +62,13 @@
   border-radius: 20px;
   width: 20px;
   height: 20px;
+}
+
+.buttons {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
 }
 
 @media (orientation: portrait) {

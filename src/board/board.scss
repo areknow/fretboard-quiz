@@ -9,7 +9,7 @@
     border-collapse: collapse;
     tr.hidden {
       td {
-        padding: 0;
+        padding: 6px;
       }
     }
     th,
@@ -32,7 +32,7 @@
         height: 20px;
       }
       &.active:after {
-        background: red;
+        background: rgb(74, 157, 226);
       }
     }
   }
@@ -52,11 +52,49 @@
   justify-content: center;
 }
 
-.buttons {
+.info {
   display: flex;
-  width: 60%;
-  margin: auto;
-  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+
+  .icon {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    &.visible {
+      visibility: visible;
+    }
+    i {
+      &.green {
+        color: green;
+      }
+      &.red {
+        color: red;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content: space-between;
+    button {
+      all: unset;
+      cursor: pointer;
+      border: 1px solid black;
+      border-radius: 3px;
+      padding: 10px 20px;
+    }
+  }
+  .score {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (orientation: portrait) {

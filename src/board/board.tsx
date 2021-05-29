@@ -1,20 +1,34 @@
 import cx from "classnames";
 import { useCallback, useEffect, useState } from "react";
 import "./board.scss";
-import { resetBoard } from "./constants";
 import { Note } from "./types";
-import { generateBoardWithActiveNote } from "./utils";
+import { generateBoardWithActiveNote, resetBoard } from "./utils";
 
 const Board = () => {
   const [board, setBoard] = useState(resetBoard());
   const [activeNote, setActiveNote] = useState<Note>({ string: "", note: "" });
+  console.log(activeNote);
+  const [score, setScore] = useState(0);
+  const [showGood, setShowGood] = useState(false);
+  const [showBad, setShowBad] = useState(false);
 
   const checkNote = (note: string) => {
     if (activeNote.note === note) {
-      alert("good");
+      setShowGood(true);
+      setShowBad(false);
+      setScore(score + 1);
+      randomize();
     } else {
-      alert("bad");
+      setShowBad(true);
+      setShowGood(false);
+      setScore(0);
     }
+  };
+
+  const skip = () => {
+    setShowBad(false);
+    setShowGood(false);
+    setScore(0);
   };
 
   const randomize = useCallback(() => {
@@ -24,6 +38,7 @@ const Board = () => {
   }, []);
 
   useEffect(() => {
+    skip();
     randomize();
   }, [randomize]);
 
@@ -46,23 +61,25 @@ const Board = () => {
           </tbody>
         </table>
       </div>
-      <br />
-      <br />
+      <div className="info">
+        <div className={cx(["icon", (showGood || showBad) && "visible"])}>
+          <i className={cx(["material-icons", showGood ? "green" : "red"])}>
+            {showGood ? "thumb_up" : "thumb_down"}
+          </i>
+        </div>
 
-      <pre style={{ whiteSpace: "pre-wrap", textAlign: "center" }}>
-        {JSON.stringify(activeNote)}
-      </pre>
+        <div className="buttons">
+          <button onClick={() => checkNote("A")}>A</button>
+          <button onClick={() => checkNote("B")}>B</button>
+          <button onClick={() => checkNote("C")}>C</button>
+          <button onClick={() => checkNote("D")}>D</button>
+          <button onClick={() => checkNote("E")}>E</button>
+          <button onClick={() => checkNote("F")}>F</button>
+          <button onClick={() => checkNote("G")}>G</button>
+          <button onClick={() => skip()}>Skip</button>
+        </div>
 
-      <br />
-      <div className="buttons">
-        <button onClick={() => checkNote("A")}>A</button>
-        <button onClick={() => checkNote("B")}>B</button>
-        <button onClick={() => checkNote("C")}>C</button>
-        <button onClick={() => checkNote("D")}>D</button>
-        <button onClick={() => checkNote("E")}>E</button>
-        <button onClick={() => checkNote("F")}>F</button>
-        <button onClick={() => checkNote("G")}>G</button>
-        <button onClick={() => randomize()}>Skip</button>
+        <div className="score">Score: {score}</div>
       </div>
     </>
   );

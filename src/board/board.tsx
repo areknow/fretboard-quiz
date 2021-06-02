@@ -26,6 +26,7 @@ const Board = () => {
   };
 
   const skip = () => {
+    randomize();
     setShowBad(false);
     setShowGood(false);
     setScore(0);
@@ -38,7 +39,6 @@ const Board = () => {
   }, []);
 
   useEffect(() => {
-    skip();
     randomize();
   }, [randomize]);
 
@@ -79,7 +79,9 @@ const Board = () => {
           <button onClick={() => skip()}>Skip</button>
         </div>
 
-        <div className="score">Score: {score}</div>
+        <div className="score">
+          Score: <span>{score}</span>
+        </div>
       </div>
     </>
   );

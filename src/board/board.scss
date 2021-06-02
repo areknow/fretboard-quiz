@@ -94,6 +94,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    span {
+      font-family: monospace;
+      font-size: 18px;
+      margin-left: 10px;
+    }
   }
 }
 

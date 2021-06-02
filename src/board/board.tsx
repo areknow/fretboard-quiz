@@ -44,43 +44,53 @@ const Board = () => {
 
   return (
     <>
-      <div className="board">
-        <table>
-          <tbody>
-            {board.map((string, key) => (
-              <tr key={key} className={cx([string.hidden && "hidden"])}>
-                {string.notes.map((note, key) => (
-                  <td key={key} className={cx([note.active && "active"])}>
-                    {key === 0 && (
-                      <div className="fret-label">{string.label}</div>
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="portrait">
+        <div className="rotation-message">
+          <div>
+            <i className="material-icons">screen_rotation</i>
+            <p>Rotate to landscape</p>
+          </div>
+        </div>
       </div>
-      <div className="info">
-        <div className={cx(["icon", (showGood || showBad) && "visible"])}>
-          <i className={cx(["material-icons", showGood ? "green" : "red"])}>
-            {showGood ? "thumb_up" : "thumb_down"}
-          </i>
+      <div className="landscape">
+        <div className="board">
+          <table>
+            <tbody>
+              {board.map((string, key) => (
+                <tr key={key} className={cx([string.hidden && "hidden"])}>
+                  {string.notes.map((note, key) => (
+                    <td key={key} className={cx([note.active && "active"])}>
+                      {key === 0 && (
+                        <div className="fret-label">{string.label}</div>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+        <div className="info">
+          <div className={cx(["icon", (showGood || showBad) && "visible"])}>
+            <i className={cx(["material-icons", showGood ? "green" : "red"])}>
+              {showGood ? "thumb_up" : "thumb_down"}
+            </i>
+          </div>
 
-        <div className="buttons">
-          <button onClick={() => checkNote("A")}>A</button>
-          <button onClick={() => checkNote("B")}>B</button>
-          <button onClick={() => checkNote("C")}>C</button>
-          <button onClick={() => checkNote("D")}>D</button>
-          <button onClick={() => checkNote("E")}>E</button>
-          <button onClick={() => checkNote("F")}>F</button>
-          <button onClick={() => checkNote("G")}>G</button>
-          <button onClick={() => skip()}>Skip</button>
-        </div>
+          <div className="buttons">
+            <button onClick={() => checkNote("A")}>A</button>
+            <button onClick={() => checkNote("B")}>B</button>
+            <button onClick={() => checkNote("C")}>C</button>
+            <button onClick={() => checkNote("D")}>D</button>
+            <button onClick={() => checkNote("E")}>E</button>
+            <button onClick={() => checkNote("F")}>F</button>
+            <button onClick={() => checkNote("G")}>G</button>
+            <button onClick={() => skip()}>Skip</button>
+          </div>
 
-        <div className="score">
-          Score: <span>{score}</span>
+          <div className="score">
+            Score: <span>{score}</span>
+          </div>
         </div>
       </div>
     </>

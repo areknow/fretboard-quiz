@@ -1,3 +1,17 @@
+.rotation-message {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  i {
+    font-size: 80px;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+
 .board {
   text-align: center;
   display: flex;
@@ -102,8 +116,18 @@
   }
 }
 
-@media (orientation: portrait) {
-  body {
-    transform: rotate(90deg) translateX(50px);
+.landscape {
+  display: none;
+}
+.portrait {
+  display: block;
+}
+
+@media (orientation: landscape) {
+  .landscape {
+    display: block;
+  }
+  .portrait {
+    display: none;
   }
 }

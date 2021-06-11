@@ -59,7 +59,13 @@ const Board = () => {
               {board.map((string, key) => (
                 <tr key={key} className={cx([string.hidden && "hidden"])}>
                   {string.notes.map((note, key) => (
-                    <td key={key} className={cx([note.active && "active"])}>
+                    <td
+                      key={key}
+                      className={cx([
+                        note.active && "active",
+                        note.marker && "marker",
+                      ])}
+                    >
                       {key === 0 && (
                         <div className="fret-label">{string.label}</div>
                       )}

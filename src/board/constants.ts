@@ -1,3 +1,5 @@
+export const BUTTONS = ["A", "B", "C", "D", "E", "F", "G"];
+
 export const BOARD = [
   {
     hidden: true,
@@ -48,7 +50,7 @@ export const BOARD = [
       { active: false, value: null, marker: null },
       { active: false, value: "A", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "B", marker: null },
+      { active: false, value: "B", marker: true },
     ],
   },
   {
@@ -56,16 +58,16 @@ export const BOARD = [
     notes: [
       { active: false, value: null, marker: null },
       { active: false, value: "A", marker: null },
-      { active: false, value: null, marker: null },
+      { active: false, value: null, marker: true },
       { active: false, value: "B", marker: null },
-      { active: false, value: "C", marker: null },
+      { active: false, value: "C", marker: true },
       { active: false, value: null, marker: null },
-      { active: false, value: "D", marker: null },
+      { active: false, value: "D", marker: true },
       { active: false, value: null, marker: null },
-      { active: false, value: "E", marker: null },
+      { active: false, value: "E", marker: true },
       { active: false, value: "F", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "G", marker: true },
+      { active: false, value: "G", marker: null },
     ],
   },
   {
@@ -73,16 +75,16 @@ export const BOARD = [
     notes: [
       { active: false, value: null, marker: null },
       { active: false, value: "E", marker: null },
-      { active: false, value: "F", marker: true },
+      { active: false, value: "F", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "G", marker: true },
+      { active: false, value: "G", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "A", marker: true },
+      { active: false, value: "A", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "B", marker: true },
+      { active: false, value: "B", marker: null },
       { active: false, value: "C", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "D", marker: null },
+      { active: false, value: "D", marker: true },
     ],
   },
   {
@@ -99,7 +101,7 @@ export const BOARD = [
       { active: false, value: null, marker: null },
       { active: false, value: "G", marker: null },
       { active: false, value: null, marker: null },
-      { active: false, value: "A", marker: true },
+      { active: false, value: "A", marker: null },
     ],
   },
   {

@@ -8,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #000;
   color: #fff;
-  touch-action: pan-y;
+  touch-action: none;
 }
 
 code {

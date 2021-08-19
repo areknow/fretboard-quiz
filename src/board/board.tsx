@@ -1,23 +1,26 @@
 import cx from "classnames";
 import { useCallback, useEffect, useState } from "react";
 import "./board.scss";
-import { BUTTONS } from "./constants";
-import { Note } from "./types";
-import { generateBoardWithActiveNote, resetBoard } from "./utils";
+import { BOARD, BUTTONS } from "./constants";
+import { ActiveNote, FretBoard } from "./types";
+import { setActiveNoteOnBoard } from "./utils";
 
 const Board = () => {
-  const [board, setBoard] = useState(resetBoard());
-  const [activeNote, setActiveNote] = useState<Note>({ string: "", note: "" });
+  const [board, setBoard] = useState<FretBoard>(BOARD);
+  const [activeNote, setActiveNote] = useState<ActiveNote>({
+    string: "",
+    note: "",
+  });
   const [score, setScore] = useState(0);
   const [showGood, setShowGood] = useState(false);
   const [showBad, setShowBad] = useState(false);
+  const [init, setInit] = useState(true);
 
   const randomize = useCallback(() => {
-    const boardWithNote = generateBoardWithActiveNote();
-    console.log(boardWithNote.activeNote);
-    setBoard(boardWithNote.board);
-    setActiveNote(boardWithNote.activeNote);
-  }, []);
+    const boardWithActiveNote = setActiveNoteOnBoard(board, activeNote);
+    setActiveNote(boardWithActiveNote.activeNote);
+    setBoard(boardWithActiveNote.board);
+  }, [activeNote, board]);
 
   const checkNote = useCallback(
     (note: string) => {
@@ -42,9 +45,25 @@ const Board = () => {
     setScore(0);
   }, [randomize]);
 
+  const toggleString = useCallback(
+    (toggledString: { label: string }) => {
+      const updatedBoard = [...board];
+      const string = updatedBoard.find(
+        (string) => string.label === toggledString.label
+      );
+      string!.active = !string?.active;
+      setBoard(updatedBoard);
+      skip();
+    },
+    [board, skip]
+  );
+
   useEffect(() => {
-    randomize();
-  }, [randomize]);
+    if (init) {
+      randomize();
+      setInit(false);
+    }
+  }, [init, randomize]);
 
   return (
     <>
@@ -71,7 +90,15 @@ const Board = () => {
                       {note.marker && <div className="marker" />}
                       <div className="string" />
                       {key === 0 && (
-                        <div className="fret-label">{string.label}</div>
+                        <div
+                          className={cx([
+                            "fret-label",
+                            string.active && "string-active",
+                          ])}
+                          onClick={() => toggleString(string)}
+                        >
+                          {string.label}
+                        </div>
                       )}
                     </td>
                   ))}

@@ -148,6 +148,10 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
+  opacity: 0.2;
+  &.string-active {
+    opacity: 1;
+  }
 }
 
 .info {

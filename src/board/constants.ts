@@ -2,8 +2,9 @@ export const BUTTONS = ["A", "B", "C", "D", "E", "F", "G"];
 
 export const BOARD = [
   {
-    hidden: true,
     label: "",
+    active: false,
+    hidden: true,
     notes: [
       { active: false, value: null, marker: null },
       { active: false, value: null, marker: null },
@@ -21,6 +22,7 @@ export const BOARD = [
   },
   {
     label: "e",
+    active: true,
     notes: [
       { active: false, value: "F", marker: null },
       { active: false, value: null, marker: null },
@@ -38,6 +40,7 @@ export const BOARD = [
   },
   {
     label: "B",
+    active: true,
     notes: [
       { active: false, value: "C", marker: null },
       { active: false, value: null, marker: null },
@@ -55,6 +58,7 @@ export const BOARD = [
   },
   {
     label: "G",
+    active: true,
     notes: [
       { active: false, value: null, marker: null },
       { active: false, value: "A", marker: null },
@@ -72,6 +76,7 @@ export const BOARD = [
   },
   {
     label: "D",
+    active: true,
     notes: [
       { active: false, value: null, marker: null },
       { active: false, value: "E", marker: null },
@@ -89,6 +94,7 @@ export const BOARD = [
   },
   {
     label: "A",
+    active: true,
     notes: [
       { active: false, value: null, marker: null },
       { active: false, value: "B", marker: null },
@@ -105,8 +111,9 @@ export const BOARD = [
     ],
   },
   {
-    hidden: true,
     label: "E",
+    hidden: true,
+    active: true,
     notes: [
       { active: false, value: "F", marker: null },
       { active: false, value: null, marker: null },

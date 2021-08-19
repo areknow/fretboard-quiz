@@ -131,6 +131,9 @@ const Board = () => {
             </div>
           </div>
         </div>
+        <pre style={{ whiteSpace: "pre-wrap" }}>
+          {JSON.stringify(activeNote)}
+        </pre>
       </div>
     </>
   );
